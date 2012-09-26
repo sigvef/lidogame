@@ -8,6 +8,6 @@ Room.prototype.update = function(){
     }
 }
 
-Room.prototype.addPlayer(player){
+Room.prototype.addPlayer = function(player){
     this.players.push(player);
 }
