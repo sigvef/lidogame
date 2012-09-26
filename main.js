@@ -17,7 +17,8 @@ function setup(){
 
     room = new Room();
     clients = [];
-    net.createServer(function (socket){
+    var port = process.argv[2] || 5000;
+    net.createServer(port, function (socket){
 
             /* identify the client */
             socket.name = socket.remoteAddress + ":" + socket.remotePort 
@@ -46,6 +47,7 @@ function setup(){
                 console.log(player.socket.name,"has disconnected.");
             });
     });
+    console.log("listenening on port",port,"...");
     console.log("setup complete!");
 }
 
