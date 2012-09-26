@@ -1,3 +1,4 @@
+var net = require('net');
 var Room = require("./Room.js");
 
 /* some variables for time-keeping in the main loop */
@@ -7,11 +8,31 @@ var old_time = t;
 
 /* some global vars for now */
 var room;
+var clients;
 
 function setup(){
-    console.log("setup");
     /* all setup code goes here */
+    console.log("setup");
+
     room = new Room();
+    clients = [];
+    net.createServer(function (socket){
+
+            /* identify the client */
+            socket.name = socket.remoteAddress + ":" + socket.remotePort 
+
+            /* add the client to the list of clients */
+            clients.push(socket);
+
+            socket.on('data', function (data) {
+                /* do stuff with the data later on */
+            });
+
+            socket.on('end', function () {
+                /* remove the client from the list of clients */
+                clients.splice(clients.indexOf(socket), 1);
+            });
+    });
 }
 
 function update(){
