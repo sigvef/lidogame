@@ -19,7 +19,7 @@ function update(){
     room.update();
 }
 
-/* our asynchrnous main game loop */
+/* our asynchronous main game loop */
 function loop(){
 
     /* cue the loop for another round */
