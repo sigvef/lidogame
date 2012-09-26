@@ -42,6 +42,7 @@ function setup(){
                 room.removePlayer(player);
             });
     });
+    console.log("setup complete!");
 }
 
 function update(){
