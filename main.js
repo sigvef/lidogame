@@ -26,12 +26,14 @@ function setup(){
             var player = new Player();
             player.socket = socket;
             clients.push(player);
+            console.log(player.socket.name,"has connected!");
 
             /* add our player to the room */
             Room.addPlayer(player);
 
             socket.on('data', function (data) {
                 /* do stuff with the data later on */
+                console.log(socket.name+">",data);
             });
 
             socket.on('end', function () {
@@ -40,6 +42,8 @@ function setup(){
 
                 /* also remove player from the room */
                 room.removePlayer(player);
+
+                console.log(player.socket.name,"has disconnected.");
             });
     });
     console.log("setup complete!");
