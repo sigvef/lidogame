@@ -30,7 +30,7 @@ function setup(){
             console.log(player.socket.name,"has connected!");
 
             /* add our player to the room */
-            Room.addPlayer(player);
+            room.addPlayer(player);
 
             socket.on('data', function (data) {
                 /* do stuff with the data later on */
