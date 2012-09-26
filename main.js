@@ -1,5 +1,6 @@
 var net = require('net');
 var Room = require("./Room.js");
+var Player = require("./Player.js");
 
 /* some variables for time-keeping in the main loop */
 var t = +new Date();
@@ -21,8 +22,13 @@ function setup(){
             /* identify the client */
             socket.name = socket.remoteAddress + ":" + socket.remotePort 
 
-            /* add the client to the list of clients */
-            clients.push(socket);
+            /* create a new player and add it to our clients list */
+            var player = new Player();
+            player.socket = socket;
+            clients.push(player);
+
+            /* add our player to the room */
+            Room.addPlayer(player);
 
             socket.on('data', function (data) {
                 /* do stuff with the data later on */
@@ -31,6 +37,9 @@ function setup(){
             socket.on('end', function () {
                 /* remove the client from the list of clients */
                 clients.splice(clients.indexOf(socket), 1);
+
+                /* also remove player from the room */
+                room.removePlayer(player);
             });
     });
 }

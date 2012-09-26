@@ -13,3 +13,6 @@ Room.prototype.addPlayer = function(player){
     this.players.push(player);
 }
 
+Room.prototype.addPlayer = function(player){
+    this.players.splice(clients.indexOf(socket), 1);
+}
