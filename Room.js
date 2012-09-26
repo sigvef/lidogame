@@ -1,3 +1,4 @@
+module.exports = Room;
 function Room(){
     this.players = [];
 }
@@ -11,3 +12,4 @@ Room.prototype.update = function(){
 Room.prototype.addPlayer = function(player){
     this.players.push(player);
 }
+
