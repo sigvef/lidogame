@@ -1,6 +1,6 @@
 var net = require('net');
-var Room = require("./Room.js");
-var Player = require("./Player.js");
+var Room = require("./Room");
+var Player = require("./Player");
 
 /* some variables for time-keeping in the main loop */
 var t = +new Date();
