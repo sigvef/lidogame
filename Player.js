@@ -12,5 +12,8 @@ function Player(){
 
 Player.prototype.update = function() {
     /* TODO: look at the controllerState, and act on it */
+
+    this.x += this.dx;
+    this.y += this.dy;
 }
 
